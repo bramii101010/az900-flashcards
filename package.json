@@ -19,15 +19,15 @@
     "cloud-computing",
     "study-guide"
   ],
-  "author": "Your Name",
+  "author": "bramii101010",
   "license": "MIT",
-  "homepage": "https://yourusername.github.io/az900-flashcards",
+  "homepage": "https://bramii101010.github.io/az900-flashcards",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/az900-flashcards.git"
+    "url": "https://github.com/bramii101010/az900-flashcards.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/az900-flashcards/issues"
+    "url": "https://github.com/bramii101010/az900-flashcards/issues"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
