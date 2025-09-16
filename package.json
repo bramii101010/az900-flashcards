@@ -1,0 +1,39 @@
+{
+  "name": "az900-flashcards",
+  "version": "1.0.0",
+  "description": "Interactive flashcards for Microsoft Azure Fundamentals (AZ-900) exam preparation with updated 2025 content",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'Static HTML project - no build needed'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "azure",
+    "az-900",
+    "microsoft",
+    "certification",
+    "flashcards",
+    "exam-prep",
+    "cloud-computing",
+    "study-guide"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "homepage": "https://yourusername.github.io/az900-flashcards",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/az900-flashcards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/az900-flashcards/issues"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
