@@ -4,7 +4,7 @@ Interactive flashcards for Microsoft Azure Fundamentals (AZ-900) exam preparatio
 
 ## 🚀 Live Demo
 
-Visit the flashcards here: [Your GitHub Pages URL]
+Visit the flashcards here: (https://bramii101010.github.io/az900-flashcards/)
 
 ## 📚 What's Included
 
