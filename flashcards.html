@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZ-900 Flashcards (2025)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card {
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+    .card-front {
+      background-color: #eef2ff; /* indigo-50 */
+      color: #1e1b4b;
+    }
+    .card-back {
+      background-color: #4338ca; /* indigo-700 */
+      color: white;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">AZ-900 Flashcards (2025)</h1>
+      <p class="text-gray-600">Key Azure Fundamentals & Scenario Practice</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Cloud Concepts -->
+      <div class="card"><div class="card-inner"><div class="card-front">What are the three main cloud service models?</div><div class="card-back">IaaS, PaaS, SaaS</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">What are the three deployment models?</div><div class="card-back">Public, Private, Hybrid cloud</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: A company wants to manage hardware themselves but use Azure networking & storage. Which model?</div><div class="card-back">IaaS (Infrastructure as a Service)</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Developers want to build apps without managing servers. Which model?</div><div class="card-back">PaaS (Platform as a Service)</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: End users need access to Microsoft 365 apps online. Which model?</div><div class="card-back">SaaS (Software as a Service)</div></div></div>
+
+      <!-- Core Azure Services -->
+      <div class="card"><div class="card-inner"><div class="card-front">Which service provides scalable virtual servers?</div><div class="card-back">Azure Virtual Machines</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service offers serverless compute?</div><div class="card-back">Azure Functions</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service provides managed Kubernetes?</div><div class="card-back">Azure Kubernetes Service (AKS)</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service stores unstructured data (blobs)?</div><div class="card-back">Azure Blob Storage</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service is for globally distributed NoSQL databases?</div><div class="card-back">Azure Cosmos DB</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Store user profile images for a social app. Which storage option?</div><div class="card-back">Azure Blob Storage</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Global e-commerce app needs fast data replication worldwide. Which DB?</div><div class="card-back">Azure Cosmos DB</div></div></div>
+
+      <!-- Security & Identity -->
+      <div class="card"><div class="card-inner"><div class="card-front">What does Azure AD provide?</div><div class="card-back">Identity & Access Management, SSO, MFA</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which tool provides role-based access control (RBAC)?</div><div class="card-back">Azure RBAC</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: A company requires MFA for all employees. Which service enforces this?</div><div class="card-back">Azure Active Directory</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Limit a user to read-only access in storage. Which feature?</div><div class="card-back">RBAC (Reader role)</div></div></div>
+
+      <!-- Management & Governance -->
+      <div class="card"><div class="card-inner"><div class="card-front">Which service lets you organize resources into groups?</div><div class="card-back">Resource Groups</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service helps enforce policies (e.g., only deploy in certain regions)?</div><div class="card-back">Azure Policy</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service provides a dashboard & unified management view?</div><div class="card-back">Azure Portal</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Prevent developers from deploying VMs in non-compliant regions. Which tool?</div><div class="card-back">Azure Policy</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Track performance & alerts across all resources. Which service?</div><div class="card-back">Azure Monitor</div></div></div>
+
+      <!-- Pricing & SLA -->
+      <div class="card"><div class="card-inner"><div class="card-front">What tool helps estimate Azure costs before deployment?</div><div class="card-back">Azure Pricing Calculator</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">What tool helps track actual usage and spending?</div><div class="card-back">Azure Cost Management</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Finance team wants to forecast monthly Azure spend. Which tool?</div><div class="card-back">Pricing Calculator</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: CFO needs detailed cost analysis by resource group. Which tool?</div><div class="card-back">Cost Management + Billing</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">What does SLA define?</div><div class="card-back">Guaranteed uptime/availability (e.g., 99.9%)</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Service with 99.95% SLA. Approx downtime allowed per month?</div><div class="card-back">~22 minutes/month</div></div></div>
+
+      <!-- Compliance & Extras -->
+      <div class="card"><div class="card-inner"><div class="card-front">Which Azure tool provides compliance reports & certifications?</div><div class="card-back">Microsoft Trust Center / Compliance Manager</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Which service is used for disaster recovery & geo-redundancy?</div><div class="card-back">Azure Site Recovery</div></div></div>
+      <div class="card"><div class="card-inner"><div class="card-front">Scenario: Company wants backup copies across regions for resiliency. Which option?</div><div class="card-back">Geo-redundant storage (GRS)</div></div></div>
+
+    </div>
+  </div>
+</body>
+</html>
