@@ -3,89 +3,97 @@ import React, { useState, useEffect } from 'react';
 const AZ900Flashcards = () => {
   const flashcards = [
     // Cloud Computing Concepts
-    { term: "Cloud Computing", definition: "Delivery of computing services over the internet including servers, storage, databases, networking, and software.", scenario: "A startup uses Azure instead of buying physical servers to run their web application.", priority: "high" },
-    { term: "Capital Expenditure (CapEx)", definition: "Upfront spending on physical infrastructure that is deducted over time.", scenario: "Buying and setting up your own data center with servers, cooling, and networking equipment.", priority: "high" },
-    { term: "Operational Expenditure (OpEx)", definition: "Spending on services or products over time, paying as you use them.", scenario: "Paying monthly for Azure virtual machines based on actual usage.", priority: "high" },
-    { term: "High Availability", definition: "Systems designed to operate continuously without failure for long periods.", scenario: "An e-commerce site stays online even when one Azure data center goes offline.", priority: "high" },
-    { term: "Scalability", definition: "The ability to increase or decrease resources to match changing demand.", scenario: "A streaming service automatically adds more servers during peak viewing hours.", priority: "high" },
-    { term: "Elasticity", definition: "The ability to automatically scale resources up or down based on current demand.", scenario: "Azure automatically reduces VM instances when website traffic decreases at night.", priority: "high" },
-    { term: "Agility", definition: "The ability to rapidly develop, test, and launch applications in response to market demands.", scenario: "A development team deploys new features to production within minutes using Azure DevOps.", priority: "high" },
-    { term: "Fault Tolerance", definition: "The ability to remain operational even when components fail.", scenario: "A database continues running even if one of its servers crashes, thanks to redundancy.", priority: "high" },
-    { term: "Disaster Recovery", definition: "The ability to recover from major incidents that affect an entire region.", scenario: "After a natural disaster, a company restores operations using backups in another Azure region.", priority: "high" },
+  { "term": "Cloud Computing", "definition": "Delivery of computing services over the internet including servers, storage, databases, networking, and software.", "scenario": "A startup uses Azure instead of buying physical servers to run their web application.", "priority": "high" },
+  { "term": "Capital Expenditure (CapEx)", "definition": "Upfront spending on physical infrastructure that is deducted over time.", "scenario": "Buying and setting up your own data center with servers, cooling, and networking equipment.", "priority": "high" },
+  { "term": "Operational Expenditure (OpEx)", "definition": "Pay-as-you-go spending on services, billed based on actual usage.", "scenario": "Paying monthly for Azure virtual machines based on usage hours.", "priority": "high" },
+  { "term": "High Availability", "definition": "Design that minimizes downtime and keeps services available during failures.", "scenario": "An e-commerce site stays online even when one Azure data center goes offline.", "priority": "high" },
+  { "term": "Fault Tolerance", "definition": "The ability to continue running with zero interruption even when components fail.", "scenario": "A database continues running even if one server crashes, thanks to redundancy.", "priority": "high" },
+  { "term": "Scalability", "definition": "The ability to increase or decrease resources to match demand.", "scenario": "A streaming service adds more servers during peak viewing hours.", "priority": "high" },
+  { "term": "Elasticity", "definition": "Automatic scaling of resources up or down based on demand.", "scenario": "Azure reduces VM instances at night when traffic is lower.", "priority": "high" },
+  { "term": "Agility", "definition": "Ability to rapidly provision, test, and launch resources to meet changing business needs.", "scenario": "A dev team deploys new features to production within minutes using Azure DevOps.", "priority": "high" },
+  { "term": "Disaster Recovery", "definition": "Ability to restore services after a major outage affecting an entire region.", "scenario": "After a natural disaster, a company restores operations from another Azure region.", "priority": "high" },
 
-    // Service Models
-    { term: "Infrastructure as a Service (IaaS)", definition: "Provides virtualized computing infrastructure including servers, storage, and networks.", scenario: "A company rents Azure Virtual Machines instead of buying physical servers.", priority: "high" },
-    { term: "Platform as a Service (PaaS)", definition: "Provides a development platform including operating system, development tools, and database management.", scenario: "Developers deploy a web app to Azure App Service without managing the underlying servers.", priority: "high" },
-    { term: "Software as a Service (SaaS)", definition: "Provides complete software applications over the internet.", scenario: "A company uses Microsoft 365 for email and office applications instead of installing software locally.", priority: "high" },
+  // Service Models
+  { "term": "Infrastructure as a Service (IaaS)", "definition": "Provides virtualized computing infrastructure such as servers, storage, and networks.", "scenario": "A company rents Azure Virtual Machines instead of buying servers.", "priority": "high" },
+  { "term": "Platform as a Service (PaaS)", "definition": "Provides a managed environment for developing and deploying applications.", "scenario": "Developers deploy a web app to Azure App Service without managing servers.", "priority": "high" },
+  { "term": "Software as a Service (SaaS)", "definition": "Delivers complete software applications over the internet.", "scenario": "A company uses Microsoft 365 for email and collaboration.", "priority": "high" },
 
-    // Deployment Models
-    { term: "Public Cloud", definition: "Cloud services offered over the public internet and available to anyone who wants to purchase them.", scenario: "A small business uses Azure's public cloud services for their website and email.", priority: "high" },
-    { term: "Private Cloud", definition: "Cloud services used exclusively by one business or organization.", scenario: "A bank creates its own cloud infrastructure for sensitive financial data.", priority: "high" },
-    { term: "Hybrid Cloud", definition: "Combines public and private clouds, allowing data and applications to move between them.", scenario: "A company keeps sensitive data in a private cloud but uses public cloud for development and testing.", priority: "high" },
+  // Deployment Models
+  { "term": "Public Cloud", "definition": "Services offered by a provider to multiple customers over the public internet.", "scenario": "A small business uses Azure for their website and email.", "priority": "high" },
+  { "term": "Private Cloud", "definition": "Cloud services dedicated to a single organization.", "scenario": "A bank hosts sensitive data in its private cloud.", "priority": "high" },
+  { "term": "Hybrid Cloud", "definition": "Combination of public and private clouds with data and app portability.", "scenario": "A company keeps sensitive data private but uses public cloud for dev/test.", "priority": "high" },
 
-    // Core Azure Services
-    { term: "Azure Virtual Machines", definition: "On-demand, scalable computing resources that provide complete control over the operating system.", scenario: "A company migrates their existing Windows server applications to Azure VMs.", priority: "high" },
-    { term: "Azure App Service", definition: "Platform for building, deploying, and scaling web apps and APIs without managing infrastructure.", scenario: "A developer quickly deploys a Python web application without configuring servers.", priority: "high" },
-    { term: "Azure Container Instances (ACI)", definition: "The fastest way to run containers in Azure without managing virtual machines.", scenario: "A microservices application runs each service in separate containers for better isolation.", priority: "high" },
-    { term: "Azure Kubernetes Service (AKS)", definition: "Managed Kubernetes service for deploying and managing containerized applications at scale.", scenario: "A large e-commerce platform orchestrates hundreds of containers across multiple servers.", priority: "high" },
-    { term: "Azure Functions", definition: "Serverless compute service that runs code in response to events without managing infrastructure.", scenario: "Processing uploaded images automatically whenever a file is added to Azure Storage.", priority: "high" },
-    { term: "Azure Virtual Desktop", definition: "Desktop and app virtualization service that runs in the cloud.", scenario: "Remote employees access their work desktop and applications from any device.", priority: "medium" },
+  // Core Azure Services
+  { "term": "Azure Virtual Machines", "definition": "On-demand, scalable computing resources with full OS control.", "scenario": "Migrating on-prem Windows servers to Azure VMs.", "priority": "high" },
+  { "term": "Azure App Service", "definition": "PaaS for building, deploying, and scaling web apps and APIs.", "scenario": "Deploying a Python app quickly without configuring servers.", "priority": "high" },
+  { "term": "Azure Container Instances (ACI)", "definition": "Run containers without managing virtual machines.", "scenario": "Running microservices in isolated containers.", "priority": "high" },
+  { "term": "Azure Kubernetes Service (AKS)", "definition": "Managed Kubernetes for orchestrating containerized applications.", "scenario": "Scaling hundreds of containers for an e-commerce app.", "priority": "high" },
+  { "term": "Azure Functions", "definition": "Event-driven serverless compute that runs code in response to triggers.", "scenario": "Processing uploaded images whenever a file is added to Azure Storage.", "priority": "high" },
+  { "term": "Azure Virtual Desktop", "definition": "Desktop and app virtualization service in the cloud.", "scenario": "Employees securely access their desktops from any device.", "priority": "medium" },
 
-    // Networking
-    { term: "Azure Virtual Network (VNet)", definition: "Logically isolated network in Azure where you can securely connect Azure resources.", scenario: "Creating a private network for your Azure VMs to communicate securely with each other.", priority: "high" },
-    { term: "VPN Gateway", definition: "Sends encrypted traffic between Azure virtual networks and on-premises locations.", scenario: "Connecting your office network securely to Azure resources over the internet.", priority: "high" },
-    { term: "Azure ExpressRoute", definition: "Private connection between on-premises infrastructure and Azure that doesn't go over the internet.", scenario: "A large enterprise needs guaranteed bandwidth and lower latency to Azure.", priority: "medium" },
-    { term: "Content Delivery Network (CDN)", definition: "Globally distributed network that caches content closer to users for faster delivery.", scenario: "A video streaming service delivers content faster by caching videos in multiple locations worldwide.", priority: "medium" },
+  // Networking
+  { "term": "Azure Virtual Network (VNet)", "definition": "Logically isolated private network in Azure.", "scenario": "Connecting Azure VMs securely in a private network.", "priority": "high" },
+  { "term": "VPN Gateway", "definition": "Encrypted connection between on-prem networks and Azure VNets.", "scenario": "Securely connecting office network to Azure resources.", "priority": "high" },
+  { "term": "Azure ExpressRoute", "definition": "Private, dedicated connection from on-premises to Azure.", "scenario": "Enterprise requires guaranteed bandwidth and low latency.", "priority": "medium" },
+  { "term": "Azure Bastion", "definition": "Secure RDP/SSH access to VMs without exposing public IPs.", "scenario": "Admins connect to VMs via Azure portal securely.", "priority": "medium" },
+  { "term": "Content Delivery Network (CDN)", "definition": "Globally distributed servers that cache content closer to users.", "scenario": "Streaming videos faster using worldwide caching.", "priority": "medium" },
+  { "term": "Azure Load Balancer", "definition": "Distributes incoming traffic across multiple servers.", "scenario": "Web traffic spread across 3 servers for high availability.", "priority": "high" },
 
-    // Storage
-    { term: "Azure Storage Account", definition: "Provides a unique namespace in Azure for your data objects.", scenario: "Creating a storage account to hold all your company's files, databases, and backups.", priority: "high" },
-    { term: "Azure Blob Storage", definition: "Object storage service for storing massive amounts of unstructured data like text or binary data.", scenario: "Storing website images, documents, and backup files in the cloud.", priority: "high" },
-    { term: "Azure Disk Storage", definition: "High-performance, durable block storage for Azure Virtual Machines.", scenario: "Adding additional storage drives to your Azure VMs for databases or applications.", priority: "high" },
-    { term: "Azure Files", definition: "Fully managed file shares in the cloud accessible via SMB protocol.", scenario: "Multiple VMs sharing the same configuration files stored centrally.", priority: "medium" },
-    { term: "Storage Tiers (Hot, Cool, Archive)", definition: "Different pricing tiers based on how frequently you access your data.", scenario: "Storing recent documents in Hot tier, older files in Cool tier, and compliance archives in Archive tier.", priority: "medium" },
+  // Storage
+  { "term": "Azure Storage Account", "definition": "Provides a unique namespace for all Azure storage data objects.", "scenario": "Storing files, databases, and backups under one account.", "priority": "high" },
+  { "term": "Azure Blob Storage", "definition": "Object storage for unstructured data (text, images, binary).", "scenario": "Storing images and documents in the cloud.", "priority": "high" },
+  { "term": "Azure Disk Storage", "definition": "High-performance block storage for Azure VMs.", "scenario": "Adding disks to VMs for databases or apps.", "priority": "high" },
+  { "term": "Azure Files", "definition": "Managed file shares accessible over SMB/NFS.", "scenario": "Multiple VMs sharing central config files.", "priority": "medium" },
+  { "term": "Storage Tiers", "definition": "Pricing tiers: Hot (frequent), Cool (infrequent), Archive (long-term).", "scenario": "Recent files in Hot, old data in Cool, compliance in Archive.", "priority": "medium" },
 
-    // Databases
-    { term: "Azure SQL Database", definition: "Fully managed relational database service based on SQL Server.", scenario: "A web application stores user data in a cloud database without managing SQL Server.", priority: "high" },
-    { term: "Azure Cosmos DB", definition: "Globally distributed, multi-model database service for any scale.", scenario: "A social media app needs a database that works fast anywhere in the world.", priority: "medium" },
-    { term: "Azure Database for MySQL", definition: "Fully managed MySQL database service in the cloud.", scenario: "Migrating an existing PHP application's MySQL database to Azure.", priority: "medium" },
+  // Databases
+  { "term": "Azure SQL Database", "definition": "Fully managed relational database with HA, scaling, and backups.", "scenario": "Web app stores data without managing SQL Server.", "priority": "high" },
+  { "term": "Azure Cosmos DB", "definition": "Globally distributed NoSQL database with multi-model support.", "scenario": "Social media app requires global low-latency database.", "priority": "medium" },
+  { "term": "Azure Database for MySQL", "definition": "Fully managed MySQL in Azure.", "scenario": "Migrating a PHP app’s MySQL DB to Azure.", "priority": "medium" },
 
-    // Identity and Access
-    { term: "Microsoft Entra ID (Azure AD)", definition: "Cloud-based identity and access management service.", scenario: "Employees use their company login to access both Azure resources and Office 365.", priority: "high" },
-    { term: "Multi-Factor Authentication (MFA)", definition: "Security method requiring two or more verification factors to gain access.", scenario: "Users must enter a password and confirm via phone app to access sensitive data.", priority: "high" },
-    { term: "Single Sign-On (SSO)", definition: "Ability to use one set of credentials to access multiple applications.", scenario: "An employee logs in once and can access email, CRM, and Azure portal without additional logins.", priority: "medium" },
-    { term: "Conditional Access", definition: "Policies that enforce access controls based on specific conditions.", scenario: "Requiring MFA only when users access company data from outside the office.", priority: "medium" },
+  // Identity & Access
+  { "term": "Microsoft Entra ID", "definition": "Cloud-based identity and access management (formerly Azure AD).", "scenario": "Employees sign in once to access Azure and Microsoft 365.", "priority": "high" },
+  { "term": "Multi-Factor Authentication (MFA)", "definition": "Requires two or more verification factors for login.", "scenario": "Password + phone app approval required.", "priority": "high" },
+  { "term": "Single Sign-On (SSO)", "definition": "One set of credentials gives access to multiple apps.", "scenario": "Employee logs in once to access email, CRM, and Azure portal.", "priority": "medium" },
+  { "term": "Conditional Access", "definition": "Policies that grant/deny access based on conditions.", "scenario": "Require MFA when logging in outside the office.", "priority": "medium" },
+  { "term": "Shared Responsibility Model", "definition": "Division of security responsibilities between Microsoft and the customer.", "scenario": "Microsoft secures datacenters; customers secure apps and data.", "priority": "high" },
 
-    // Security and Compliance
-    { term: "Azure Security Center", definition: "Unified security management system that strengthens security posture across hybrid cloud workloads.", scenario: "Getting security recommendations and threat detection across all Azure resources.", priority: "high" },
-    { term: "Azure Key Vault", definition: "Cloud service for securely storing and accessing secrets, keys, and certificates.", scenario: "Storing database passwords and API keys securely instead of hardcoding them in applications.", priority: "high" },
-    { term: "Network Security Groups (NSG)", definition: "Contains security rules that allow or deny network traffic to Azure resources.", scenario: "Blocking all internet traffic to database servers except from web servers.", priority: "high" },
-    { term: "Azure DDoS Protection", definition: "Service that protects Azure resources from Distributed Denial of Service attacks.", scenario: "Protecting a web application from being overwhelmed by malicious traffic.", priority: "medium" },
-    { term: "Defense in Depth", definition: "Layered security approach using multiple security measures.", scenario: "Using firewalls, encryption, access controls, and monitoring together for comprehensive security.", priority: "medium" },
+  // Security & Compliance
+  { "term": "Microsoft Defender for Cloud", "definition": "Cloud-native security service to detect threats and strengthen posture.", "scenario": "Company gets threat alerts and recommendations across workloads.", "priority": "high" },
+  { "term": "Microsoft Sentinel", "definition": "Cloud-native SIEM/SOAR for threat detection and response.", "scenario": "Security team monitors and responds to incidents across Azure and on-prem.", "priority": "medium" },
+  { "term": "Azure Firewall", "definition": "Managed firewall service for network traffic filtering.", "scenario": "Controlling all outbound traffic from a subnet.", "priority": "medium" },
+  { "term": "Azure Key Vault", "definition": "Secure storage for keys, secrets, and certificates.", "scenario": "Storing DB passwords and API keys securely.", "priority": "high" },
+  { "term": "Network Security Groups (NSG)", "definition": "Rules that allow or deny traffic to Azure resources.", "scenario": "Blocking all traffic to DB servers except from web servers.", "priority": "high" },
+  { "term": "Azure DDoS Protection", "definition": "Protects against distributed denial-of-service attacks.", "scenario": "Shielding a web app from traffic floods.", "priority": "medium" },
+  { "term": "Defense in Depth", "definition": "Layered security approach using multiple controls.", "scenario": "Firewalls, encryption, RBAC, and monitoring together.", "priority": "medium" },
+  { "term": "Microsoft Trust Center", "definition": "Portal with compliance info, certifications, and reports.", "scenario": "Company checks Azure’s compliance with ISO and GDPR.", "priority": "medium" },
 
-    // Monitoring and Management
-    { term: "Azure Monitor", definition: "Comprehensive monitoring solution for collecting, analyzing, and responding to telemetry.", scenario: "Getting alerts when CPU usage is high and viewing performance metrics for troubleshooting.", priority: "high" },
-    { term: "Azure Advisor", definition: "Personalized cloud consultant that provides best practice recommendations.", scenario: "Getting suggestions to reduce costs by resizing underutilized virtual machines.", priority: "medium" },
-    { term: "Azure Resource Manager (ARM)", definition: "Deployment and management service that enables you to manage Azure resources.", scenario: "Using ARM templates to deploy identical environments for development, testing, and production.", priority: "medium" },
-    { term: "Management Groups", definition: "Containers that help you manage access, policy, and compliance across multiple subscriptions.", scenario: "A large organization organizing hundreds of subscriptions by department and applying company-wide policies.", priority: "medium" },
+  // Monitoring & Management
+  { "term": "Azure Monitor", "definition": "Collects, analyzes, and responds to telemetry from resources.", "scenario": "Alerts when CPU usage spikes.", "priority": "high" },
+  { "term": "Azure Advisor", "definition": "Provides best-practice recommendations for cost, security, and performance.", "scenario": "Suggests resizing underutilized VMs.", "priority": "medium" },
+  { "term": "Azure Resource Manager (ARM)", "definition": "Framework for deploying and managing resources with templates.", "scenario": "Deploy identical environments via ARM templates.", "priority": "medium" },
+  { "term": "Management Groups", "definition": "Organize subscriptions for centralized policy and access control.", "scenario": "Applying company-wide policy across departments.", "priority": "medium" },
+  { "term": "Azure Arc", "definition": "Extends Azure management to on-prem, multi-cloud, and edge.", "scenario": "Managing Azure and AWS resources from one portal.", "priority": "medium" },
 
-    // Pricing and Support
-    { term: "Azure Pricing Calculator", definition: "Tool to estimate costs for Azure services before deployment.", scenario: "Planning a cloud migration by calculating monthly costs for VMs, storage, and networking.", priority: "high" },
-    { term: "Total Cost of Ownership (TCO) Calculator", definition: "Tool that compares the cost of running workloads in Azure versus on-premises.", scenario: "Proving to management that moving to Azure will save money over 3 years compared to maintaining data centers.", priority: "high" },
-    { term: "Azure Service Level Agreements (SLA)", definition: "Formal commitments about service availability and performance.", scenario: "Choosing services with 99.9% uptime SLA for critical business applications.", priority: "high" },
-    { term: "Azure Support Plans", definition: "Different levels of technical support from Basic to Premier.", scenario: "A production environment needing 24/7 phone support chooses Professional Direct support plan.", priority: "medium" },
+  // Pricing & Support
+  { "term": "Azure Pricing Calculator", "definition": "Estimates service costs before deployment.", "scenario": "Forecasting VM and storage costs for a project.", "priority": "high" },
+  { "term": "Azure Cost Management + Billing", "definition": "Tracks actual usage and optimizes costs.", "scenario": "Analyzing monthly spend by resource group.", "priority": "high" },
+  { "term": "Total Cost of Ownership (TCO) Calculator", "definition": "Compares cost of Azure vs. on-premises workloads (being phased out).", "scenario": "Estimating 3-year savings by moving workloads to Azure.", "priority": "medium" },
+  { "term": "Azure Service Level Agreements (SLA)", "definition": "Microsoft’s uptime and availability guarantees per service.", "scenario": "Service with 99.95% SLA allows ~22 minutes downtime per month.", "priority": "high" },
+  { "term": "Azure Support Plans", "definition": "Support tiers from Basic to Premier.", "scenario": "Production system requires 24/7 ProDirect support.", "priority": "medium" },
 
-    // Governance and Compliance
-    { term: "Azure Policy", definition: "Service that helps enforce organizational standards and assess compliance at scale.", scenario: "Preventing users from creating expensive GPU virtual machines in development subscriptions.", priority: "medium" },
-    { term: "Azure Blueprints", definition: "Declarative way to orchestrate deployment of resource templates, policies, and role assignments.", scenario: "Ensuring all new projects follow company security standards by deploying a standard blueprint.", priority: "medium" },
-    { term: "Resource Locks", definition: "Prevents accidental deletion or modification of critical Azure resources.", scenario: "Locking a production database to prevent anyone from accidentally deleting it.", priority: "medium" },
-    { term: "Resource Tags", definition: "Name/value pairs that help organize and track Azure resources.", scenario: "Tagging resources by department and project to track costs and manage billing.", priority: "medium" },
+  // Governance & Compliance
+  { "term": "Azure Policy", "definition": "Enforces organizational standards and evaluates compliance.", "scenario": "Blocking creation of VMs in non-compliant regions.", "priority": "medium" },
+  { "term": "Azure Blueprints", "definition": "Package of templates, policies, and role assignments for standardization.", "scenario": "Deploying a secure baseline for all new projects.", "priority": "medium" },
+  { "term": "Resource Locks", "definition": "Prevents accidental deletion or modification of resources.", "scenario": "Locking a production SQL database against deletion.", "priority": "medium" },
+  { "term": "Resource Tags", "definition": "Name/value pairs for organizing and tracking resources.", "scenario": "Tagging by department to allocate costs.", "priority": "medium" },
+  { "term": "Cloud Adoption Framework (CAF)", "definition": "Guidance and best practices for planning and governing Azure adoption.", "scenario": "An enterprise uses CAF to structure migration strategy.", "priority": "medium" },
 
-    // Additional Core Concepts
-    { term: "Availability Zones", definition: "Physically separate datacenters within an Azure region for high availability.", scenario: "Deploying VMs across multiple zones so your app stays running if one datacenter fails.", priority: "high" },
-    { term: "Azure Regions", definition: "Geographical areas containing one or more datacenters for deploying Azure resources.", scenario: "Choosing East US region for better performance for customers on the East Coast.", priority: "high" },
-    { term: "Azure Load Balancer", definition: "Distributes incoming network traffic across multiple servers for high availability.", scenario: "Spreading web traffic across 3 web servers so no single server gets overloaded.", priority: "high" },
-    { term: "Azure Marketplace", definition: "Online store for finding, trying, and deploying software solutions certified to run on Azure.", scenario: "Quickly deploying a pre-configured WordPress site from the Azure Marketplace.", priority: "medium" }
-  ];
+  // Regions & Availability
+  { "term": "Azure Regions", "definition": "Geographic locations containing one or more datacenters.", "scenario": "Choosing East US for low-latency access to East Coast customers.", "priority": "high" },
+  { "term": "Availability Zones", "definition": "Physically separate datacenters within a region for redundancy.", "scenario": "Deploying across zones so service continues if one fails.", "priority": "high" },
+  { "term": "Azure Marketplace", "definition": "Online store with certified apps and solutions for Azure.", "scenario": "Deploying a WordPress VM template directly from Marketplace.", "priority": "medium" }
+];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
